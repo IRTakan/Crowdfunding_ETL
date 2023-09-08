@@ -14,12 +14,16 @@ The instructions for this mini project were divided into the following subsectio
 
 - A "category" column that contains only the category titles.
 
+<img src="https://github.com/IRTakan/Crowdfunding_ETL/blob/main/images/category.png?raw=true">
+
 -- Exported the category DataFrame as category.csv and saved it to our GitHub repository. Extracted and transformed the crowdfunding.xlsx Excel data to 
 create a subcategory DataFrame that had the following columns:
 
 - A "subcategory_id" column that has entries going sequentially from "subcat1" to "subcatn", where n is the number of unique subcategories.
 
 - A "subcategory" column that contains only the subcategory titles. Exported the subcategory DataFrame as subcategory.csv and saved it to your GitHub repository.
+
+<img src="https://github.com/IRTakan/Crowdfunding_ETL/blob/main/images/subcategory.png?raw=true">
 
 - Create the Campaign DataFrame.
 
@@ -51,8 +55,10 @@ create a subcategory DataFrame that had the following columns:
 
 - The "category_id" column, with unique identification numbers matching those in the "category_id" column of the category DataFrame.
 
-- The "subcategory_id" column, with the unique identification numbers matching those in the "subcategory_id" column of the subcategory DataFrame.
-  Exported the campaign DataFrame as campaign.csv and saved it to our GitHub repository.
+- The "subcategory_id" column, with the unique identification numbers matching those in the "subcategory_id" column of the subcategory DataFrame.Exported the campaign DataFrame as campaign.csv and saved it to our GitHub repository.
+
+(Preview, doesn't show entire table. There's more it to the right.)
+<img src="https://github.com/IRTakan/Crowdfunding_ETL/blob/main/images/campaign.png?raw=true">
 
 - Create the Contacts DataFrame.
 
@@ -71,8 +77,9 @@ Cleaned and exported the DataFrame as contacts.csv and saved it in our GitHub re
 
 Imported the contacts.xlsx file into a DataFrame. Extracted the "contact_id", "name", and "email" columns by using regular expressions.
 Created a new DataFrame with the extracted data. Converted the "contact_id" column to an integer type.
-Split each "name" column value into a first and a last name, and placed each in a new column. Lastly we cleaned and then exported the DataFrame 
-as contacts.csv and saved it to our GitHub repository.
+Split each "name" column value into a first and a last name, and placed each in a new column. Lastly we cleaned and then exported the DataFrame as contacts.csv and saved it to our GitHub repository.
+
+<img src="https://github.com/IRTakan/Crowdfunding_ETL/blob/main/images/contacts.png?raw=true">
 
 - Create the Crowdfunding Database.
 
@@ -82,8 +89,8 @@ Created a new Postgres database, named crowdfunding_db. Used the database schema
 Verifed the table creation by running a SELECT statement for each table. Afterwards Imported each CSV file into its corresponding SQL table and 
 checked that each table had the correct data by running a SELECT statement for each.
 
-*Technologies used: Microsoft Visual Studio Code, QuickDBD and PgAdmin 4
+*Technologies used: Microsoft Visual Studio Code, QuickDBD and PgAdmin 4.
   
-*Authors of project: Iman Najar & Robert Takan
+*Authors of project: Iman Najar & Robert Takan.
 
   
