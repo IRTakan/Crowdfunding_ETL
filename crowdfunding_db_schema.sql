@@ -1,17 +1,38 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+﻿-- drop tables (in reverse order, to avoid errors) if they already exist
+DROP TABLE IF EXISTS campaign;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS subcategory;
+DROP TABLE IF EXISTS contacts;
+
+-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- Link to schema: https://app.quickdatabasediagrams.com/#/d/aYLErN
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
 
-CREATE TABLE "contact" (
+-- Modify this code to update the DB schema diagram.
+-- To reset the sample schema, replace everything with
+-- two dots ('..' - without quotes).
+CREATE TABLE "contacts" (
     "contact_id" INT   NOT NULL,
     "first_name" VARCHAR(50)   NOT NULL,
     "last_name" VARCHAR(50)   NOT NULL,
     "email" VARCHAR(50)   NOT NULL,
-    CONSTRAINT "pk_contact" PRIMARY KEY (
+    CONSTRAINT "pk_contacts" PRIMARY KEY (
         "contact_id"
      ),
-    CONSTRAINT "uc_contact_email" UNIQUE (
+    CONSTRAINT "uc_contacts_email" UNIQUE (
         "email"
+    )
+);
+
+CREATE TABLE "category" (
+    "category_id" VARCHAR(4)   NOT NULL,
+    "category" VARCHAR(50)   NOT NULL,
+    CONSTRAINT "pk_category" PRIMARY KEY (
+        "category_id"
+     ),
+    CONSTRAINT "uc_category_category" UNIQUE (
+        "category"
     )
 );
 
@@ -20,18 +41,13 @@ CREATE TABLE "subcategory" (
     "subcategory" VARCHAR(50)   NOT NULL,
     CONSTRAINT "pk_subcategory" PRIMARY KEY (
         "subcategory_id"
-     )
+     ),
+    CONSTRAINT "uc_subcategory_subcategory" UNIQUE (
+        "subcategory"
+    )
 );
 
-CREATE TABLE "category" (
-    "category_id" VARCHAR(4)   NOT NULL,
-    "category" VARCHAR(50)   NOT NULL,
-    CONSTRAINT "pk_category" PRIMARY KEY (
-        "category_id"
-     )
-);
-
-CREATE TABLE "compaign" (
+CREATE TABLE "Campaign" (
     "cf_id" INT   NOT NULL,
     "contact_id" INT   NOT NULL,
     "company_name" VARCHAR(50)   NOT NULL,
@@ -46,17 +62,17 @@ CREATE TABLE "compaign" (
     "end_date" DATE   NOT NULL,
     "category_id" VARCHAR(4)   NOT NULL,
     "subcategory_id" VARCHAR(8)   NOT NULL,
-    CONSTRAINT "pk_compaign" PRIMARY KEY (
+    CONSTRAINT "pk_Campaign" PRIMARY KEY (
         "cf_id"
      )
 );
 
-ALTER TABLE "compaign" ADD CONSTRAINT "fk_compaign_contact_id" FOREIGN KEY("contact_id")
-REFERENCES "contact" ("contact_id");
+ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_contact_id" FOREIGN KEY("contact_id")
+REFERENCES "contacts" ("contact_id");
 
-ALTER TABLE "compaign" ADD CONSTRAINT "fk_compaign_category_id" FOREIGN KEY("category_id")
+ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_category_id" FOREIGN KEY("category_id")
 REFERENCES "category" ("category_id");
 
-ALTER TABLE "compaign" ADD CONSTRAINT "fk_compaign_subcategory_id" FOREIGN KEY("subcategory_id")
+ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_subcategory_id" FOREIGN KEY("subcategory_id")
 REFERENCES "subcategory" ("subcategory_id");
 
