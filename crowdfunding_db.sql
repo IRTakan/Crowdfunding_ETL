@@ -1,4 +1,10 @@
-CREATE TABLE contact (
+-- drop tables (in reverse order, to avoid errors) if they already exist
+DROP TABLE IF EXISTS campaign;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS subcategory;
+DROP TABLE IF EXISTS contacts;
+
+CREATE TABLE contacts (
 	contact_id INT PRIMARY KEY,
 	first_name VARCHAR(50) NOT NULL,
 	last_name VARCHAR(50) NOT NULL,
@@ -15,7 +21,7 @@ CREATE TABLE subcategory (
 	subcategory VARCHAR(50) UNIQUE
 );
 
-CREATE TABLE compaign (
+CREATE TABLE campaign (
 	cf_id INT PRIMARY KEY,
 	contact_id INT,
 	company_name VARCHAR(50) NOT NULL,
@@ -30,15 +36,15 @@ CREATE TABLE compaign (
 	end_date DATE NOT NULL,
 	category_id VARCHAR(4),
 	subcategory_id VARCHAR(8),
-	FOREIGN KEY(contact_id) REFERENCES contact (contact_id),
+	FOREIGN KEY(contact_id) REFERENCES contacts (contact_id),
 	FOREIGN  KEY (category_id) REFERENCES category (category_id),
 	FOREIGN KEY (subcategory_id) REFERENCES subcategory (subcategory_id)  
 );
-SELECT * FROM contact;
+
+SELECT * FROM contacts;
 
 SELECT * FROM category;
 
 SELECT * FROM subcategory;
 
-SELECT * FROM compaign;
-
+SELECT * FROM campaign;
